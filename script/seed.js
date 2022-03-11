@@ -2,6 +2,7 @@
 
 const db = require('../server/db')
 const {User} = require('../server/db/models')
+const {Recipe} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
@@ -12,7 +13,40 @@ async function seed() {
     User.create({email: 'murphy@email.com', password: '123'})
   ])
 
+  const recipes = await Promise.all([
+    Recipe.create({
+      name: 'Peanut Butter & Jelly Sandwich',
+      description: 'A sandwich with peanut butter and jelly',
+      ingredients: 'Peanut Butter, Jelly, Bread',
+      instructions: 'spread the peanut butter and jelly on the bread n stuff'
+    }),
+    Recipe.create({
+      name: 'Hot Dog',
+      description: 'A hot dog',
+      ingredients: 'Hot dog things',
+      instructions: 'Grill the sausage, put it in the bun'
+    }),
+    Recipe.create({
+      name: 'Salad',
+      description: 'A salad',
+      ingredients: 'Salad things',
+      instructions: 'Get the salad things and toss the salad idk'
+    }),
+    Recipe.create({
+      name: 'Lime in the coconut',
+      description: 'You put the lime in the coconut you mix em both up',
+      ingredients: 'You put the lime in the coconut you mix em both up',
+      instructions: 'You put the lime in the coconut you mix em both up'
+    })
+  ])
+
+  const associationUsersRecipes = await Promise.all([
+    users[0].setRecipes(recipes.slice(0, 2)),
+    users[1].setRecipes(recipes.slice(2, 4))
+  ])
+
   console.log(`seeded ${users.length} users`)
+  console.log(`seeded ${recipes.length} recipes`)
   console.log(`seeded successfully`)
 }
 
