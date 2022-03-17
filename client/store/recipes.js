@@ -7,11 +7,11 @@ const GET_ALL_RECIPES = 'GET_ALL_RECIPES'
 
 // action creators
 const getAllRecipes = recipes => ({
-  type: 'GET_ALL_RECIPES'
+  type: 'GET_ALL_RECIPES',
+  recipes
 })
 
-//thunks
-
+// thunks
 export const fetchRecipes = () => {
   return async dispatch => {
     try {
@@ -22,3 +22,15 @@ export const fetchRecipes = () => {
     }
   }
 }
+
+// reducer
+const recipeReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case GET_ALL_RECIPES:
+      return action.recipes
+    default:
+      return state
+  }
+}
+
+export default recipeReducer
