@@ -7,7 +7,7 @@ const GET_ALL_RECIPES = 'GET_ALL_RECIPES'
 
 // action creators
 const getAllRecipes = recipes => ({
-  type: 'GET_ALL_RECIPES',
+  type: GET_ALL_RECIPES,
   recipes
 })
 

@@ -12,4 +12,15 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+// Single recipe
+// GET /api/recipes/:recipeId
+router.get('/:recipeId', async (req, res, next) => {
+  try {
+    const recipe = await Recipe.findByPk(req.params.recipeId)
+    res.json(recipe)
+  } catch (err) {
+    next(err)
+  }
+})
+
 module.exports = router
