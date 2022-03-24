@@ -14,7 +14,7 @@ export class SingleRecipe extends React.Component {
 
   render() {
     const {recipe} = this.props
-    if (!recipe) return <h1>Loading Recipe</h1>
+    if (!recipe) return <h2>Loading Recipe</h2>
     return !recipe.name ? (
       <h1>Loading Recipe</h1>
     ) : (
@@ -26,7 +26,7 @@ export class SingleRecipe extends React.Component {
 }
 
 const mapState = state => ({
-  recipe: state.SingleRecipe
+  recipe: state.singleRecipe
 })
 
 const mapDispatch = dispatch => ({

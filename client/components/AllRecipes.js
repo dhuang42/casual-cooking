@@ -13,12 +13,14 @@ export class AllRecipes extends React.Component {
   }
 
   render() {
+    console.log('props', this.props)
+    const {recipes} = this.props
     return (
       <div id="all-recipes">
         <h1>All Recipes</h1>
-        {!this.props.recipes[0] && <div>No Recipes</div>}
+        {!recipes[0] && <div>No Recipes</div>}
         <div className="recipes-container">
-          {this.props.recipes.map(recipe => (
+          {recipes.map(recipe => (
             <div className="card" key={recipe.id}>
               <h2>{recipe.name}</h2>
             </div>
