@@ -1,5 +1,8 @@
 const User = require('./user')
 const Recipe = require('./recipe')
+const Step = require('./step')
+const Ingredient = require('./ingredient')
+const RecipeIngredient = require('./recipeIngredient')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -19,7 +22,18 @@ const Recipe = require('./recipe')
 User.hasMany(Recipe)
 Recipe.belongsTo(User)
 
+// one-to-many btwn Recipe and Step
+Recipe.hasMany(Step)
+Step.belongsTo(Recipe)
+
+// many-to-many btwn Recipe and Ingredient, using RecipeIngredient association table
+Recipe.belongsToMany(Ingredient, {through: RecipeIngredient})
+Ingredient.belongsToMany(Recipe, {through: RecipeIngredient})
+
 module.exports = {
   User,
-  Recipe
+  Recipe,
+  Step,
+  Ingredient,
+  RecipeIngredient
 }

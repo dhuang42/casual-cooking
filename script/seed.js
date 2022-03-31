@@ -1,8 +1,13 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
-const {Recipe} = require('../server/db/models')
+const {
+  User,
+  Recipe,
+  Step,
+  Ingredient,
+  RecipeIngredient
+} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
@@ -16,37 +21,122 @@ async function seed() {
   const recipes = await Promise.all([
     Recipe.create({
       name: 'Peanut Butter & Jelly Sandwich',
-      description: 'A sandwich with peanut butter and jelly',
-      ingredients: 'Peanut Butter, Jelly, Bread',
-      instructions: 'spread the peanut butter and jelly on the bread n stuff'
+      description: 'A sandwich with peanut butter and jelly'
     }),
     Recipe.create({
       name: 'Hot Dog',
-      description: 'A hot dog',
-      ingredients: 'Hot dog things',
-      instructions: 'Grill the sausage, put it in the bun'
+      description: 'A hot dog'
     }),
     Recipe.create({
       name: 'Salad',
-      description: 'A salad',
-      ingredients: 'Salad things',
-      instructions: 'Get the salad things and toss the salad idk'
+      description: 'A salad'
     }),
     Recipe.create({
       name: 'Lime in the coconut',
-      description: 'You put the lime in the coconut you mix em both up',
-      ingredients: 'You put the lime in the coconut you mix em both up',
-      instructions: 'You put the lime in the coconut you mix em both up'
+      description: 'You put the lime in the coconut you mix em both up'
     })
   ])
 
+  const steps = await Promise.all([
+    // steps for pb&j
+    Step.create({
+      place: 1,
+      instructions: 'spread peanut butter on bread'
+    }),
+    Step.create({
+      place: 2,
+      instructions: 'spread jelly on bread'
+    }),
+    Step.create({
+      place: 3,
+      instructions: 'put the bread together idk'
+    }),
+    // steps for hot dog
+    Step.create({
+      place: 1,
+      instructions: 'grill the sausage'
+    }),
+    Step.create({
+      place: 2,
+      instructions: 'put the sausage in the bun'
+    }),
+    // steps for salad
+    Step.create({
+      place: 1,
+      instructions: 'put the salad things in the bowl'
+    }),
+    Step.create({
+      place: 2,
+      instructions: 'toss the salad'
+    }),
+    // steps for lime in the coconut
+    Step.create({
+      place: 1,
+      instructions: 'put the lime in the coconut'
+    }),
+    Step.create({
+      place: 2,
+      instructions: 'mix em both up'
+    })
+  ])
+
+  const ingredients = await Promise.all([
+    Ingredient.create({
+      name: 'Peanut Butter'
+    }),
+    Ingredient.create({
+      name: 'Jelly'
+    }),
+    Ingredient.create({
+      name: 'Bread'
+    }),
+    Ingredient.create({
+      name: 'Hot Dog Bun'
+    }),
+    Ingredient.create({
+      name: 'Sausage'
+    }),
+    Ingredient.create({
+      name: 'Salad things'
+    }),
+    Ingredient.create({
+      name: 'Coconut'
+    }),
+    Ingredient.create({
+      name: 'Lime'
+    })
+  ])
+
+  // remember, for slice start idx (first arg) is inclusive
+  // end idx (second arg) is exclusive (extraction ends BEFORE specified end index)
+  // if end idx greater than sequence length, slicing will extract through to the end of sequence
+  // tldr start idx included in the slice, end idx is not
   const associationUsersRecipes = await Promise.all([
     users[0].setRecipes(recipes.slice(0, 2)),
     users[1].setRecipes(recipes.slice(2, 4))
   ])
 
+  const associationRecipesSteps = await Promise.all([
+    recipes[0].setSteps(steps.slice(0, 3)),
+    recipes[1].setSteps(steps.slice(3, 5)),
+    recipes[2].setSteps(steps.slice(5, 7)),
+    recipes[3].setSteps(steps.slice(7, 9))
+  ])
+
+  //! must finish seed file by creating these many-to-many associations
+  // find a way to pinpoint the specific ingredients to associate with each recipe
+
+  // const associationRecipesIngredients = await Promise.all([
+  //   recipes[0].setIngredients()
+  // ])
+
+  // const recipeIngredients = await Promise.all([
+  // ])
+
   console.log(`seeded ${users.length} users`)
   console.log(`seeded ${recipes.length} recipes`)
+  console.log(`seeded ${steps.length} steps`)
+  console.log(`seeded ${ingredients.length} ingredients`)
   console.log(`seeded successfully`)
 }
 

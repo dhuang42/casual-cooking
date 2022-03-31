@@ -1,15 +1,14 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const Recipe = db.define('recipe', {
-  name: {
-    type: Sequelize.STRING,
-    allowNull: false,
+const Step = db.define('step', {
+  place: {
+    type: Sequelize.INTEGER,
     validate: {
-      notEmpty: true // must have name
+      min: 0
     }
   },
-  description: {
+  instructions: {
     type: Sequelize.TEXT,
     allowNull: false,
     validate: {
@@ -18,4 +17,4 @@ const Recipe = db.define('recipe', {
   }
 })
 
-module.exports = Recipe
+module.exports = Step
