@@ -123,20 +123,28 @@ async function seed() {
     recipes[3].setSteps(steps.slice(7, 9))
   ])
 
-  //! must finish seed file by creating these many-to-many associations
-  // find a way to pinpoint the specific ingredients to associate with each recipe
+  //! must finish creating these many-to-many associations
+  const associationRecipesIngredients = await Promise.all([
+    recipes[0].setIngredients([ingredients[0], ingredients[1], ingredients[2]])
+  ])
 
-  // const associationRecipesIngredients = await Promise.all([
-  //   recipes[0].setIngredients()
-  // ])
+  const associationIngredientsRecipes = await Promise.all([
+    ingredients[0].setRecipes([recipes[0]]),
+    ingredients[1].setRecipes([recipes[0]]),
+    ingredients[2].setRecipes([recipes[0]])
+  ])
 
-  // const recipeIngredients = await Promise.all([
-  // ])
+  const recipeIngredients = await RecipeIngredient.findAll()
+  //! must finish seed file by assinging quantity and unit to each recipeIngredient
+  // figure out a way to pinpoint specific recipeIngredients
+
+  console.log('recipeIngredients array', recipeIngredients)
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded ${recipes.length} recipes`)
   console.log(`seeded ${steps.length} steps`)
   console.log(`seeded ${ingredients.length} ingredients`)
+  console.log(`seeded ${recipeIngredients.length} recipeIngredients`)
   console.log(`seeded successfully`)
 }
 
