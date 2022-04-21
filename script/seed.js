@@ -1,13 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {
-  User,
-  Recipe,
-  Step,
-  Ingredient,
-  RecipeIngredient
-} = require('../server/db/models')
+const {User, Recipe, Step, Ingredient} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
@@ -123,28 +117,17 @@ async function seed() {
     recipes[3].setSteps(steps.slice(7, 9))
   ])
 
-  //! must finish creating these many-to-many associations
   const associationRecipesIngredients = await Promise.all([
-    recipes[0].setIngredients([ingredients[0], ingredients[1], ingredients[2]])
+    recipes[0].setIngredients([ingredients[0], ingredients[1], ingredients[2]]),
+    recipes[1].setIngredients([ingredients[3], ingredients[4]]),
+    recipes[2].setIngredients([ingredients[5]]),
+    recipes[3].setIngredients([ingredients[6], ingredients[7]])
   ])
-
-  const associationIngredientsRecipes = await Promise.all([
-    ingredients[0].setRecipes([recipes[0]]),
-    ingredients[1].setRecipes([recipes[0]]),
-    ingredients[2].setRecipes([recipes[0]])
-  ])
-
-  const recipeIngredients = await RecipeIngredient.findAll()
-  //! must finish seed file by assinging quantity and unit to each recipeIngredient
-  // figure out a way to pinpoint specific recipeIngredients
-
-  console.log('recipeIngredients array', recipeIngredients)
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded ${recipes.length} recipes`)
   console.log(`seeded ${steps.length} steps`)
   console.log(`seeded ${ingredients.length} ingredients`)
-  console.log(`seeded ${recipeIngredients.length} recipeIngredients`)
   console.log(`seeded successfully`)
 }
 
