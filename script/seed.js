@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User, Recipe, Step, Ingredient} = require('../server/db/models')
+const {User, Recipe, Step, Ingredient, Tool} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
@@ -15,89 +15,153 @@ async function seed() {
   const recipes = await Promise.all([
     Recipe.create({
       name: 'Peanut Butter & Jelly Sandwich',
-      description: 'A sandwich with peanut butter and jelly'
+      description: 'A simple, traditional PB&J Sandwich.',
+      time: 2,
+      serves: 1,
+      yieldQty: 1,
+      yieldUnit: 'sandwich'
     }),
     Recipe.create({
-      name: 'Hot Dog',
-      description: 'A hot dog'
-    }),
-    Recipe.create({
-      name: 'Salad',
-      description: 'A salad'
-    }),
-    Recipe.create({
-      name: 'Lime in the coconut',
-      description: 'You put the lime in the coconut you mix em both up'
-    })
-  ])
-
-  const steps = await Promise.all([
-    // steps for pb&j
-    Step.create({
-      place: 1,
-      instructions: 'spread peanut butter on bread'
-    }),
-    Step.create({
-      place: 2,
-      instructions: 'spread jelly on bread'
-    }),
-    Step.create({
-      place: 3,
-      instructions: 'put the bread together idk'
-    }),
-    // steps for hot dog
-    Step.create({
-      place: 1,
-      instructions: 'grill the sausage'
-    }),
-    Step.create({
-      place: 2,
-      instructions: 'put the sausage in the bun'
-    }),
-    // steps for salad
-    Step.create({
-      place: 1,
-      instructions: 'put the salad things in the bowl'
-    }),
-    Step.create({
-      place: 2,
-      instructions: 'toss the salad'
-    }),
-    // steps for lime in the coconut
-    Step.create({
-      place: 1,
-      instructions: 'put the lime in the coconut'
-    }),
-    Step.create({
-      place: 2,
-      instructions: 'mix em both up'
+      name: 'Beef and Broccoli Stir-Fry',
+      description:
+        'A great tasting, easy to make beef and broccoli stir-fry. Made to serve over rice.',
+      time: 25,
+      serves: 4
     })
   ])
 
   const ingredients = await Promise.all([
+    // ingredients for pb&j, idx 0 - 2
     Ingredient.create({
-      name: 'Peanut Butter'
+      quantity: '2',
+      unit: 'slices',
+      name: 'sandwich bread'
     }),
     Ingredient.create({
-      name: 'Jelly'
+      quantity: '2',
+      unit: 'tablespoons',
+      name: 'peanut butter'
     }),
     Ingredient.create({
-      name: 'Bread'
+      quantity: '2',
+      unit: 'teaspoons',
+      name: 'grape jelly or strawberry jam'
+    }),
+
+    // ingredients for beef broccoli stir fry, idx 3 - 14
+    Ingredient.create({
+      quantity: '3',
+      unit: 'tablespoons',
+      name: 'cornstarch, divided'
     }),
     Ingredient.create({
-      name: 'Hot Dog Bun'
+      quantity: '1/2',
+      unit: 'cup',
+      name: 'water, plus'
     }),
     Ingredient.create({
-      name: 'Sausage'
+      quantity: '2',
+      unit: 'tablespoons',
+      name: 'water, divided'
     }),
     Ingredient.create({
-      name: 'Salad things'
+      quantity: '1/2',
+      unit: 'teaspoon',
+      name: 'garlic powder'
     }),
     Ingredient.create({
-      name: 'Coconut'
+      quantity: '1',
+      unit: 'lb',
+      name:
+        'boneless round steak or 1 lb charcoal chuck steak, cut into thin 3-inch stips'
     }),
     Ingredient.create({
-      name: 'Lime'
+      quantity: '2',
+      unit: 'tablespoons',
+      name: 'vegetable oil, divided'
+    }),
+    Ingredient.create({
+      quantity: '4',
+      unit: 'cups',
+      name: 'broccoli florets'
+    }),
+    Ingredient.create({
+      quantity: '1',
+      name: 'small onion, cut into wedges'
+    }),
+    Ingredient.create({
+      quantity: '1',
+      unit: 'cup',
+      name: 'reduced sodium soy sauce'
+    }),
+    Ingredient.create({
+      quantity: '2',
+      unit: 'tablespoons',
+      name: 'brown sugar'
+    }),
+    Ingredient.create({
+      name: 'hot cooked rice, for serving'
+    }),
+    Ingredient.create({
+      name: 'toasted sesame seeds, for serving, optional'
+    })
+  ])
+
+  const tools = await Promise.all([
+    // tools for broccoli stir-fry, idx 0
+    Tool.create({
+      name: 'large skillet or wok'
+    })
+  ])
+
+  const steps = await Promise.all([
+    // steps for pb&j idx 0 - 2
+    Step.create({
+      place: 1,
+      instructions: 'Spread the peanut butter on one piece of bread.'
+    }),
+    Step.create({
+      place: 2,
+      instructions: 'Spread the jelly on the other side.'
+    }),
+    Step.create({
+      place: 3,
+      instructions: 'Put the two pieces of bread together to form a sandwich.'
+    }),
+
+    // steps for beef broccoli stir-fry, idx 3 - 9
+    Step.create({
+      place: 1,
+      instructions:
+        'In a bowl, combine 2 tablespoons cornstarch, 2 tablespoons water and garlic powder until smooth.'
+    }),
+    Step.create({
+      place: 2,
+      instructions: 'Add beef and toss.'
+    }),
+    Step.create({
+      place: 3,
+      instructions:
+        'In a large skillet or wok over medium-high heat, stir-fry beef in 1 tablespoon oil until beef reaches desired doneness; remove and keep warm.'
+    }),
+    Step.create({
+      place: 4,
+      instructions:
+        'Stir-fry onion in remaining oil for 4-5 minutes until softened. Add the broccoli and cook for 3 minutes until the broccoli is tender but still crisp. Return beef to pan.'
+    }),
+    Step.create({
+      place: 5,
+      instructions:
+        'Combine soy sauce, brown sugar, ginger and remaining 1 tablespoon cornstarch and 1/2 cup water until smooth; add to the pan.'
+    }),
+    Step.create({
+      place: 6,
+      instructions: 'Cook and stir for 2 minutes.'
+    }),
+    Step.create({
+      place: 7,
+      instructions:
+        'Serve over rice and garnish with toasted sesame seeds (optional).'
     })
   ])
 
@@ -106,28 +170,30 @@ async function seed() {
   // if end idx greater than sequence length, slicing will extract through to the end of sequence
   // tldr start idx included in the slice, end idx is not
   const associationUsersRecipes = await Promise.all([
-    users[0].setRecipes(recipes.slice(0, 2)),
-    users[1].setRecipes(recipes.slice(2, 4))
+    users[0].setRecipes(recipes.slice(0, 2))
+
+    // users[1].setRecipes(recipes.slice(2, 4))
+  ])
+
+  const associationRecipesIngredients = await Promise.all([
+    recipes[0].setIngredients(ingredients.slice(0, 3)),
+    recipes[1].setIngredients(ingredients.slice(3, 15))
+  ])
+
+  const associationRecipesTools = await Promise.all([
+    recipes[1].setTools(tools.slice(0, 1))
   ])
 
   const associationRecipesSteps = await Promise.all([
     recipes[0].setSteps(steps.slice(0, 3)),
-    recipes[1].setSteps(steps.slice(3, 5)),
-    recipes[2].setSteps(steps.slice(5, 7)),
-    recipes[3].setSteps(steps.slice(7, 9))
-  ])
-
-  const associationRecipesIngredients = await Promise.all([
-    recipes[0].setIngredients([ingredients[0], ingredients[1], ingredients[2]]),
-    recipes[1].setIngredients([ingredients[3], ingredients[4]]),
-    recipes[2].setIngredients([ingredients[5]]),
-    recipes[3].setIngredients([ingredients[6], ingredients[7]])
+    recipes[1].setSteps(steps.slice(3, 10))
   ])
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded ${recipes.length} recipes`)
-  console.log(`seeded ${steps.length} steps`)
   console.log(`seeded ${ingredients.length} ingredients`)
+  console.log(`seeded ${tools.length} tools`)
+  console.log(`seeded ${steps.length} steps`)
   console.log(`seeded successfully`)
 }
 

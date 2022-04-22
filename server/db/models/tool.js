@@ -1,13 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const Ingredient = db.define('ingredient', {
-  quantity: {
-    type: Sequelize.STRING
-  },
-  unit: {
-    type: Sequelize.STRING
-  },
+const Tool = db.define('tool', {
   name: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -17,4 +11,4 @@ const Ingredient = db.define('ingredient', {
   }
 })
 
-module.exports = Ingredient
+module.exports = Tool

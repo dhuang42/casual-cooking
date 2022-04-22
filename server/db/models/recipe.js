@@ -15,6 +15,27 @@ const Recipe = db.define('recipe', {
     validate: {
       notEmpty: true
     }
+  },
+  time: {
+    type: Sequelize.INTEGER,
+    validate: {
+      min: 0
+    }
+  },
+  serves: {
+    type: Sequelize.INTEGER,
+    validate: {
+      min: 0
+    }
+  },
+  yieldQty: {
+    type: Sequelize.INTEGER,
+    validate: {
+      min: 0
+    }
+  },
+  yieldUnit: {
+    type: Sequelize.STRING
   }
 })
 
