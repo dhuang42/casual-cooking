@@ -8,8 +8,8 @@ export class AllRecipes extends React.Component {
     super(props)
   }
 
-  componentDidMount() {
-    this.props.getRecipes()
+  async componentDidMount() {
+    await this.props.getRecipes()
   }
 
   render() {
