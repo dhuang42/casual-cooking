@@ -3,7 +3,7 @@ import axios from 'axios'
 const initialState = []
 
 // action types
-const GET_INGREDIENTS_FOR_RECIPE = 'GET_INGREDIENTS'
+const GET_INGREDIENTS_FOR_RECIPE = 'GET_INGREDIENTS_FOR_RECIPE'
 
 // action creators
 const getIngredients = ingredients => ({

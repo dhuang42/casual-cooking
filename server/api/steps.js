@@ -23,4 +23,19 @@ router.get('/:stepId', async (req, res, next) => {
   }
 })
 
+// All steps for specific recipe
+// GET /api/steps/recipe/recipeId
+router.get('/recipe/:recipeId', async (req, res, next) => {
+  try {
+    const steps = await Step.findAll({
+      where: {
+        recipeId: req.params.recipeId
+      }
+    })
+    res.json(steps)
+  } catch (err) {
+    next(err)
+  }
+})
+
 module.exports = router
