@@ -14,11 +14,12 @@ export class SingleRecipe extends React.Component {
     await this.props.getRecipe(recipeId)
     await this.props.getIngredients(recipeId)
     await this.props.getSteps(recipeId)
+    console.log('props', this.props)
   }
 
   render() {
     const {recipe, ingredients, steps} = this.props
-    console.log('props', this.props)
+
     if (!recipe) return <h2>Loading Recipe</h2>
     return !recipe.name ? (
       <h1>Loading Recipe</h1>
@@ -39,6 +40,7 @@ export class SingleRecipe extends React.Component {
             ))}
           </div>
         )}
+        <h2>Steps</h2>
         {!steps ? (
           <div>No Steps</div>
         ) : (
@@ -57,7 +59,8 @@ export class SingleRecipe extends React.Component {
 
 const mapState = state => ({
   recipe: state.singleRecipe,
-  ingredients: state.ingredients
+  ingredients: state.ingredients,
+  steps: state.steps
 })
 
 const mapDispatch = dispatch => ({
