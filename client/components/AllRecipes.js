@@ -22,7 +22,9 @@ export class AllRecipes extends React.Component {
         <div className="recipes-container">
           {recipes.map(recipe => (
             <div className="card" key={recipe.id}>
-              <h2>{recipe.name}</h2>
+              <Link to={`recipes/${recipe.id}`}>
+                <h2>{recipe.name}</h2>
+              </Link>
             </div>
           ))}
         </div>
