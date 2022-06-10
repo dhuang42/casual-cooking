@@ -12,6 +12,7 @@ async function seed() {
     User.create({email: 'murphy@email.com', password: '123'})
   ])
 
+  //! need to find and add more recipes to seed
   const recipes = await Promise.all([
     Recipe.create({
       name: 'Peanut Butter & Jelly Sandwich',

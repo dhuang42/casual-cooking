@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
+//! add imageUrl and render the images on the front end
 const Recipe = db.define('recipe', {
   name: {
     type: Sequelize.STRING,

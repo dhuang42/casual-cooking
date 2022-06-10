@@ -17,6 +17,8 @@ export class SingleRecipe extends React.Component {
     console.log('props', this.props)
   }
 
+  //! need to render optional tools section for each recipe
+  //! tools section should not render if recipe has no tools
   render() {
     const {recipe, ingredients, steps} = this.props
 
