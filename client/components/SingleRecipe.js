@@ -27,19 +27,23 @@ export class SingleRecipe extends React.Component {
       <h1>Loading Recipe</h1>
     ) : (
       <div className="single-recipe-view-container">
-        <h1 className="recipe-name">{recipe.name}</h1>
-        <p className="recipe-description">{recipe.description}</p>
-        <h2>Ingredients</h2>
+        <div className="recipe-info-container">
+          <h1 className="recipe-name">{recipe.name}</h1>
+          <p className="recipe-description">{recipe.description}</p>
+        </div>
         {!ingredients ? (
           <div>No Ingredients</div>
         ) : (
           <div className="ingredients-container">
-            {ingredients.map(ingredient => (
-              <p className="ingredient-item" key={ingredient.id}>
-                {ingredient.quantity && ingredient.quantity}{' '}
-                {ingredient.unit && ingredient.unit} {ingredient.name}
-              </p>
-            ))}
+            <h2>Ingredients</h2>
+            <div className="ingredients-list-container">
+              {ingredients.map(ingredient => (
+                <p className="ingredient-item" key={ingredient.id}>
+                  {ingredient.quantity && ingredient.quantity}{' '}
+                  {ingredient.unit && ingredient.unit} {ingredient.name}
+                </p>
+              ))}
+            </div>
           </div>
         )}
         {/* only render this div if there are tools */}
@@ -55,16 +59,19 @@ export class SingleRecipe extends React.Component {
             </div>
           </div>
         )}
-        <h2>Steps</h2>
+
         {!steps ? (
           <div>No Steps</div>
         ) : (
           <div className="steps-container">
-            {steps.map(step => (
-              <p className="step-item" key={step.id}>
-                Step {step.place}: {step.instructions}
-              </p>
-            ))}
+            <h2>Steps</h2>
+            <div className="steps-list-container">
+              {steps.map(step => (
+                <p className="step-item" key={step.id}>
+                  Step {step.place}: {step.instructions}
+                </p>
+              ))}
+            </div>
           </div>
         )}
       </div>
