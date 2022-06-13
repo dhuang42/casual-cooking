@@ -25,7 +25,7 @@ router.get('/:ingredientId', async (req, res, next) => {
 
 // All ingredients for specific recipe
 // GET /api/ingredients/recipe/:recipeId
-router.get('/recipe/:recipeId', async (req, res, next) => {
+router.get('/recipes/:recipeId', async (req, res, next) => {
   try {
     const ingredients = await Ingredient.findAll({
       where: {

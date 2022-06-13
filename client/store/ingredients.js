@@ -16,7 +16,7 @@ export const fetchIngredientsForRecipe = recipeId => {
   return async dispatch => {
     try {
       const {data: ingredients} = await axios.get(
-        `/api/ingredients/recipe/${recipeId}`
+        `/api/ingredients/recipes/${recipeId}`
       )
       dispatch(getIngredients(ingredients))
     } catch (err) {

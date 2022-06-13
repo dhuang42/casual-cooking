@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {fetchSingleRecipe} from '../store/singleRecipe'
 import {fetchIngredientsForRecipe} from '../store/ingredients'
+import {fetchToolsForRecipe} from '../store/tools'
 import {fetchStepsForRecipe} from '../store/steps'
 
 export class SingleRecipe extends React.Component {
@@ -13,14 +14,13 @@ export class SingleRecipe extends React.Component {
     const recipeId = this.props.match.params.recipeId
     await this.props.getRecipe(recipeId)
     await this.props.getIngredients(recipeId)
+    await this.props.getTools(recipeId)
     await this.props.getSteps(recipeId)
     console.log('props', this.props)
   }
 
-  //! need to render optional tools section for each recipe
-  //! tools section should not render if recipe has no tools
   render() {
-    const {recipe, ingredients, steps} = this.props
+    const {recipe, ingredients, tools, steps} = this.props
 
     if (!recipe) return <h2>Loading Recipe</h2>
     return !recipe.name ? (
@@ -40,6 +40,19 @@ export class SingleRecipe extends React.Component {
                 {ingredient.unit && ingredient.unit} {ingredient.name}
               </p>
             ))}
+          </div>
+        )}
+        {/* only render this div if there are tools */}
+        {tools[0] && (
+          <div className="tools-container">
+            <h2>Equipment Needed</h2>
+            <div className="tools-list-container">
+              {tools.map(tool => (
+                <p className="tool-item" key={tool.id}>
+                  {tool.name}
+                </p>
+              ))}
+            </div>
           </div>
         )}
         <h2>Steps</h2>
@@ -62,12 +75,14 @@ export class SingleRecipe extends React.Component {
 const mapState = state => ({
   recipe: state.singleRecipe,
   ingredients: state.ingredients,
+  tools: state.tools,
   steps: state.steps
 })
 
 const mapDispatch = dispatch => ({
   getRecipe: id => dispatch(fetchSingleRecipe(id)),
   getIngredients: id => dispatch(fetchIngredientsForRecipe(id)),
+  getTools: id => dispatch(fetchToolsForRecipe(id)),
   getSteps: id => dispatch(fetchStepsForRecipe(id))
 })
 

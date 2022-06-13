@@ -25,7 +25,7 @@ router.get('/:toolId', async (req, res, next) => {
 
 // All tools for specific recipe
 // GET /api/tools/recipe/:recipeId
-router.get('/recipe/:recipeId', async (req, res, next) => {
+router.get('/recipes/:recipeId', async (req, res, next) => {
   try {
     const tools = await Tool.findAll({
       where: {

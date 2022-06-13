@@ -6,6 +6,7 @@ import user from './user'
 import recipes from './recipes'
 import singleRecipe from './singleRecipe'
 import ingredients from './ingredients'
+import tools from './tools'
 import steps from './steps'
 
 const reducer = combineReducers({
@@ -13,6 +14,7 @@ const reducer = combineReducers({
   recipes,
   singleRecipe,
   ingredients,
+  tools,
   steps
 })
 const middleware = composeWithDevTools(
