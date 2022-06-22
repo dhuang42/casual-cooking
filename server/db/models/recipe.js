@@ -1,7 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-//! add imageUrl and render the images on the front end
 const Recipe = db.define('recipe', {
   name: {
     type: Sequelize.STRING,
@@ -16,6 +15,10 @@ const Recipe = db.define('recipe', {
     validate: {
       notEmpty: true
     }
+  },
+  imageUrl: {
+    type: Sequelize.TEXT,
+    defaultValue: '/no-image-icon.jpg'
   },
   time: {
     type: Sequelize.INTEGER,

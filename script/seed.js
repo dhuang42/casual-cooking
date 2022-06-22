@@ -17,6 +17,8 @@ async function seed() {
     Recipe.create({
       name: 'Peanut Butter & Jelly Sandwich',
       description: 'A simple, traditional PB&J Sandwich.',
+      imageUrl:
+        'https://img.sndimg.com/food/image/upload/f_auto,c_thumb,q_73,ar_16:9,w_598/v1/img/recipes/24/39/65/picIDMFir.jpg',
       time: 2,
       serves: 1,
       yieldQty: 1,
@@ -26,6 +28,8 @@ async function seed() {
       name: 'Beef and Broccoli Stir-Fry',
       description:
         'A great tasting, easy to make beef and broccoli stir-fry. Made to serve over rice.',
+      imageUrl:
+        'https://img.sndimg.com/food/image/upload/f_auto,c_thumb,q_73,ar_16:9,w_560/v1/img/recipes/99/47/6/j7L11nRQNeKACth1WJkg_easy-beef-broccoli-stir-fry-6106.jpg',
       time: 25,
       serves: 4
     })

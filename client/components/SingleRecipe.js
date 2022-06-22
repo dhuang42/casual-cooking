@@ -29,6 +29,13 @@ export class SingleRecipe extends React.Component {
       <div className="single-recipe-view-container">
         <div className="recipe-info-container">
           <h1 className="recipe-name">{recipe.name}</h1>
+          <img
+            className="recipe-image"
+            src={recipe.imageUrl}
+            alt={`image of ${recipe.name}`}
+            width="400"
+            height="auto"
+          />
           <p className="recipe-description">{recipe.description}</p>
         </div>
         {!ingredients ? (
