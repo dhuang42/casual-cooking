@@ -38,18 +38,18 @@ export class SingleRecipe extends React.Component {
           />
           <p className="recipe-description">{recipe.description}</p>
           {recipe.time && (
-            <p>
+            <p className="recipe-time">
               <strong>Time:</strong> {recipe.time} minutes
             </p>
           )}
           {recipe.serves && (
-            <p>
+            <p className="recipe-servings">
               <strong>Serves:</strong> {recipe.serves}
             </p>
           )}
           {recipe.yieldQty &&
             recipe.yieldUnit && (
-              <p>
+              <p className="recipe-yield">
                 <strong>Yield:</strong> {recipe.yieldQty} {recipe.yieldUnit}
               </p>
             )}
@@ -58,7 +58,7 @@ export class SingleRecipe extends React.Component {
           <div>No Ingredients</div>
         ) : (
           <div className="ingredients-container">
-            <h2>Ingredients</h2>
+            <h2 className="ingredients-heading">Ingredients</h2>
             <div className="ingredients-list-container">
               {ingredients.map(ingredient => (
                 <p className="ingredient-item" key={ingredient.id}>
@@ -72,7 +72,7 @@ export class SingleRecipe extends React.Component {
         {/* only render this div if there are tools */}
         {tools[0] && (
           <div className="tools-container">
-            <h2>Equipment Needed</h2>
+            <h2 className="equipment-heading">Equipment Needed</h2>
             <div className="tools-list-container">
               {tools.map(tool => (
                 <p className="tool-item" key={tool.id}>
@@ -87,7 +87,7 @@ export class SingleRecipe extends React.Component {
           <div>No Steps</div>
         ) : (
           <div className="steps-container">
-            <h2>Steps</h2>
+            <h2 className="steps-heading">Steps</h2>
             <div className="steps-list-container">
               {steps.map(step => (
                 <p className="step-item" key={step.id}>

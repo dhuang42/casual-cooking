@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {fetchRecipes} from '../store/recipes'
 
+//! turn into cards
 export class AllRecipes extends React.Component {
   constructor(props) {
     super(props)
