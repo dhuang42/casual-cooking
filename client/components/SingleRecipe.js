@@ -42,6 +42,17 @@ export class SingleRecipe extends React.Component {
               <strong>Time:</strong> {recipe.time} minutes
             </p>
           )}
+          {recipe.serves && (
+            <p>
+              <strong>Serves:</strong> {recipe.serves}
+            </p>
+          )}
+          {recipe.yieldQty &&
+            recipe.yieldUnit && (
+              <p>
+                <strong>Yield:</strong> {recipe.yieldQty} {recipe.yieldUnit}
+              </p>
+            )}
         </div>
         {!ingredients ? (
           <div>No Ingredients</div>
