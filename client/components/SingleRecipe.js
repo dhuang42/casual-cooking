@@ -37,6 +37,11 @@ export class SingleRecipe extends React.Component {
             height="auto"
           />
           <p className="recipe-description">{recipe.description}</p>
+          {recipe.time && (
+            <p>
+              <strong>Time:</strong> {recipe.time} minutes
+            </p>
+          )}
         </div>
         {!ingredients ? (
           <div>No Ingredients</div>
