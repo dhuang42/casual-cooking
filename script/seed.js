@@ -61,6 +61,33 @@ async function seed() {
       time: 10,
       yieldQty: 1,
       yieldUnit: 'quesadilla'
+    }),
+    Recipe.create({
+      name: 'French Toast',
+      description:
+        'Crackling around the edges and crisp on the outsides with pudding-soft centers, these thin slices of French toast taste like bread pudding, and feel especially like dessert if you smother them with maple syrup, jam or other sweet toppings. The key is to fully soak the bread, then cook the slices gently, so the insides cook through without the outsides burning. If the bread starts to brown too quickly, turn down the heat. You can double, triple or quadruple the amounts below to make enough for friends. Serve them in batches straight from the pan, or keep warm in a 200-degree oven on a plate or baking sheet.',
+      imageUrl:
+        'https://static01.nyt.com/images/2022/06/22/dining/21beginner-rex9/merlin_208168380_44ea7383-7d04-4d84-851b-575925088698-articleLarge.jpg',
+      time: 10,
+      serves: 1
+    }),
+    Recipe.create({
+      name: 'Cheesy Eggs on Toast',
+      description:
+        'You don’t even need a toaster to make perfect toast. Crisping bread in a skillet — in melted butter, of course — gives it a tasty brown crunch and leaves you with a hot pan ready to scramble eggs. Be sure to swipe up all the butter and crumbs with the toasted bread when you take it out to keep the eggs nice and golden. Because more butter is added to the pan at the same time as the eggs, it melts slowly into the eggs while you stir them, leaving you with a creamy mix that ends up even creamier when cheese is melted in at the very end.',
+      imageUrl:
+        'https://static01.nyt.com/images/2022/06/22/dining/21beginnerrex8/merlin_208160643_302a75cd-0de6-467a-adeb-b4f209561919-articleLarge.jpg',
+      time: 10,
+      serves: 1
+    }),
+    Recipe.create({
+      name: 'Star Wars Blue Milk',
+      description:
+        'May the 4th Be With You! I thought it would be fun to make Blue Milk (aka bantha milk) from Star Wars today. You can get this at the “Milk Stand” at Galaxy’s Edge in Disneyland. They describe it as a Plant-based blend of Coconut and Rice Milk with alluring fruity characteristics – it’s like a tropical slushie. My version is a more delicious upgrade to Disneyland’s version – I use real fruit and juices  instead of a long list of “flavorings”',
+      imageUrl:
+        'https://foodisafourletterword.com/wp-content/uploads/2022/05/Star_Wars_Blue_Milk_Recipe_03.jpg',
+      time: 5,
+      serves: 1
     })
   ])
 
@@ -194,7 +221,7 @@ async function seed() {
       name: 'ripe avocados'
     }),
 
-    // ingredients for cripsy-edged quesadilla 26 - 28
+    // ingredients for cripsy-edged quesadilla idx 26 - 28
     Ingredient.create({
       quantity: '2',
       unit: 'teaspoons',
@@ -209,6 +236,98 @@ async function seed() {
       unit: 'cup',
       name:
         'shredded cheese (such as Cheddar, Monterey Jack, or Mexican cheese blend)'
+    }),
+
+    // ingredients for french toast idx 29 - 34
+    Ingredient.create({
+      quantity: '1',
+      name: 'large egg'
+    }),
+    Ingredient.create({
+      quantity: '1/4',
+      unit: 'cup',
+      name: 'milk'
+    }),
+    Ingredient.create({
+      name: 'Salt'
+    }),
+    Ingredient.create({
+      quantity: '2',
+      unit: 'slices',
+      name: 'sandwich bread'
+    }),
+    Ingredient.create({
+      quantity: '1/2',
+      unit: 'tablespoon',
+      name: 'unsalted butter, plus more for serving'
+    }),
+    Ingredient.create({
+      name: 'Maple syrup, jam, or other toppings - for serving'
+    }),
+
+    // ingredients for cheesy eggs on toast idx 35 - 39
+    Ingredient.create({
+      quantity: '2',
+      name: 'large eggs'
+    }),
+    Ingredient.create({
+      name: 'Salt and pepper'
+    }),
+    Ingredient.create({
+      quantity: '1 1/2',
+      unit: 'tablespoons',
+      name: 'unsalted butter'
+    }),
+    Ingredient.create({
+      quantity: '1',
+      unit: 'slice',
+      name: 'bread'
+    }),
+    Ingredient.create({
+      quantity: '1/4',
+      unit: 'cup',
+      name: 'shredded cheese (Cheddar, Monterey Jack, or a blend)'
+    }),
+
+    // ingredients for blue milk idx 40 - 47
+    Ingredient.create({
+      quantity: '1/2',
+      unit: 'Cup',
+      name: 'Rice Milk'
+    }),
+    Ingredient.create({
+      quantity: '1/2',
+      unit: 'Cup',
+      name: 'Passion Fruit Juice'
+    }),
+    Ingredient.create({
+      quantity: '1/4',
+      unit: 'Cup',
+      name: 'Coconut Milk Beverage (from a cartion)'
+    }),
+    Ingredient.create({
+      quantity: '1',
+      unit: 'Cup',
+      name: 'Frozen Pineapple Chunks'
+    }),
+    Ingredient.create({
+      quantity: '2',
+      unit: 'Teaspoons',
+      name: 'Lime Juice'
+    }),
+    Ingredient.create({
+      quantity: '2 - 3',
+      name: 'Watermelon Jolly Ranchers'
+    }),
+    Ingredient.create({
+      quantity: '3/4',
+      unit: 'Cup',
+      name: 'Ice'
+    }),
+    Ingredient.create({
+      quantity: '2 - 4',
+      unit: 'Drops',
+      name: 'Neon Blue Food Coloring'
     })
   ])
 
@@ -308,7 +427,7 @@ async function seed() {
         'Contrary to popular belief, adding avocado pits to guacamole does nothing to prevent oxidation, but if you press a good layer of plastic wrap or parchment paper directly over the guacamole and store it in the refrigerator, it will keep well for up to 2 days.'
     }),
 
-    // steps for crispy-edged quesadilla 17 - 19
+    // steps for crispy-edged quesadilla idx 17 - 19
     Step.create({
       place: 1,
       instructions:
@@ -323,6 +442,52 @@ async function seed() {
       place: 3,
       instructions:
         'Flip the quesadilla over and let cook on the other side for another 1 to 2 minutes, until the cheese is crisp and golden. Slide quesadilla onto a plate and serve immediately.'
+    }),
+
+    // steps for french toast idx 20 - 23
+    Step.create({
+      place: 1,
+      instructions:
+        'In a bowl or shallow dish that will fit the bread, beat the egg, milk and a pinch of salt with a fork until very smooth and bubbly on top.'
+    }),
+    Step.create({
+      place: 2,
+      instructions:
+        'Add both bread slices (it’s OK to stack them if they don’t quite fit) and soak them, turning a few times, until the mixture is fully absorbed.'
+    }),
+    Step.create({
+      place: 3,
+      instructions:
+        'Set a large nonstick skillet over medium heat. Add the butter and swirl it around the pan until it melts. The soaked bread will be really soft, so carefully pick up each slice by sliding your whole hand under it, then setting it in the pan. Cook until the bottoms are golden brown, about 3 minutes. Flip the slices, reduce the heat to medium-low and cook until the other sides are brown, 2 to 3 minutes.'
+    }),
+    Step.create({
+      place: 4,
+      instructions:
+        'Enjoy hot, with more butter spread over the slices and with your favorite toppings.'
+    }),
+
+    // steps for cheesy eggs and toast 24 - 26
+    Step.create({
+      place: 1,
+      instructions:
+        'Crack the eggs into a bowl and sprinkle generously with salt and pepper. Beat with a fork until evenly yellow. Leave the bowl next to the stove while you make the toast.'
+    }),
+    Step.create({
+      place: 2,
+      instructions:
+        'In a small nonstick skillet, melt a thin slice of the butter over medium-low heat. Swipe the bread in the melted butter to soak it all up. Let sit until golden brown, 2 to 3 minutes. Add another thin slice of butter to the pan then flip the bread, swiping it in the newly melted butter until it’s all soaked up. Turn the heat to the lowest setting and let the bread sit until lightly browned, 1 to 2 minutes. Transfer to a plate.'
+    }),
+    Step.create({
+      place: 3,
+      instructions:
+        'Add the remaining butter and the eggs and cook, stirring gently and constantly with a wooden spoon, until the butter melts and the eggs are half wet and half solid, 15 to 45 seconds. Turn off the heat, add the cheese and continue stirring until the mixture is creamy but no longer wet, about 30 to 45 seconds. Scrape onto the toast right away and enjoy.'
+    }),
+
+    // step for blue milk idx 27
+    Step.create({
+      place: 1,
+      instructions:
+        'Add all ingredients to a blender and blend on high speed until smooth. Start with 2 drops of Neon Blue Food Coloring, then you can add more until you’re happy with the color. Taste and add sugar if you prefer it sweeter. Serve immediately & Enjoy!'
     })
   ])
 
@@ -340,7 +505,10 @@ async function seed() {
     recipes[1].setIngredients(ingredients.slice(3, 15)),
     recipes[2].setIngredients(ingredients.slice(15, 21)),
     recipes[3].setIngredients(ingredients.slice(21, 26)),
-    recipes[4].setIngredients(ingredients.slice(26, 29))
+    recipes[4].setIngredients(ingredients.slice(26, 29)),
+    recipes[5].setIngredients(ingredients.slice(29, 35)),
+    recipes[6].setIngredients(ingredients.slice(35, 40)),
+    recipes[7].setIngredients(ingredients.slice(40, 48))
   ])
 
   const associationRecipesTools = await Promise.all([
@@ -352,7 +520,10 @@ async function seed() {
     recipes[1].setSteps(steps.slice(3, 10)),
     recipes[2].setSteps(steps.slice(10, 12)),
     recipes[3].setSteps(steps.slice(12, 17)),
-    recipes[4].setSteps(steps.slice(17, 20))
+    recipes[4].setSteps(steps.slice(17, 20)),
+    recipes[5].setSteps(steps.slice(20, 24)),
+    recipes[6].setSteps(steps.slice(24, 27)),
+    recipes[7].setSteps(steps.slice(27, 28))
   ])
 
   console.log(`seeded ${users.length} users`)
