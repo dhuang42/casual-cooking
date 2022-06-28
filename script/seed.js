@@ -41,6 +41,26 @@ async function seed() {
         'https://static01.nyt.com/images/2022/06/22/dining/21beginner-rex2/merlin_208168452_ef0bfb9e-7026-4e48-ad70-b64d84205197-articleLarge.jpg',
       time: 5,
       serves: 1
+    }),
+    Recipe.create({
+      name: 'Guacamole',
+      description:
+        'Providing a framework to build on as you wish, this pared-down guacamole lets the avocado shine. If you want more lime, add more lime. Seed the jalapeño, if you prefer its fruity heat without the spice, or leave the seeds in, if you enjoy living life on the edge. Letting the diced onion sit in lime juice for a couple of minutes will help temper its pungent bite before imbuing the dish with its oniony savoriness. Chopped cilantro and diced tomatoes are welcome additions to this Mexican staple, if you’d like. It’s your guacamole. Serve with tortilla chips, or as a condiment alongside your meal, and double or triple this recipe for a party.',
+      imageUrl:
+        'https://static01.nyt.com/images/2022/06/22/dining/21beginner-rex1/merlin_208160622_52e89e7b-f828-452a-8da3-8edf706952ed-articleLarge.jpg',
+      time: 10,
+      yieldQty: 2,
+      yieldUnit: 'cups'
+    }),
+    Recipe.create({
+      name: 'Crispy-Edged Quesadilla',
+      description:
+        'This straightforward quesadilla has an unexpected twist: a border of salty, crispy cheese surrounding the tortilla. Achieving it couldn’t be easier; just press down on the folded tortilla as it heats up in the pan so the cheese spills out and turns golden. A nonstick pan is key here, otherwise the melted cheese will glue itself onto the cooking surface. Medium heat is just the right temperature for a quesadilla: It’s hot enough to crisp up the cheese but low enough to prevent the cheese from burning.',
+      imageUrl:
+        'https://static01.nyt.com/images/2022/06/22/dining/21beginner-rex5/merlin_208160703_2c8999fd-ad2e-4460-9321-d2a0c9b1a2da-articleLarge.jpg',
+      time: 10,
+      yieldQty: 1,
+      yieldUnit: 'quesadilla'
     })
   ])
 
@@ -120,7 +140,7 @@ async function seed() {
       name: 'toasted sesame seeds, for serving, optional'
     }),
 
-    // ingredients for tuna mayo rice bowl idx 14 - 19
+    // ingredients for tuna mayo rice bowl idx 15 - 20
     Ingredient.create({
       quantity: '1',
       unit: '(5 ounce) can',
@@ -148,7 +168,47 @@ async function seed() {
     }),
     Ingredient.create({
       name:
-        'Toasted white or black sesame seeds, furikake or chopped scallions, for topping (optional) '
+        'Toasted white or black sesame seeds, furikake or chopped scallions, for topping (optional)'
+    }),
+
+    // ingredients for guacamole idx 21 - 25
+    Ingredient.create({
+      quantity: '1/2',
+      unit: 'cup',
+      name: 'finely chopped white onion (from 1 small onion)'
+    }),
+    Ingredient.create({
+      quantity: '2',
+      unit: 'tablespoons',
+      name: 'fresh lime juice (from about 1 lime)'
+    }),
+    Ingredient.create({
+      name: 'Salt and black pepper'
+    }),
+    Ingredient.create({
+      quantity: '1',
+      name: 'jalapeño'
+    }),
+    Ingredient.create({
+      quantity: '2',
+      name: 'ripe avocados'
+    }),
+
+    // ingredients for cripsy-edged quesadilla 26 - 28
+    Ingredient.create({
+      quantity: '2',
+      unit: 'teaspoons',
+      name: 'oil (such as olive, grapeseed, or sunflower oil)'
+    }),
+    Ingredient.create({
+      quantity: '1',
+      name: '(8-inch) flour tortilla'
+    }),
+    Ingredient.create({
+      quantity: '1/2',
+      unit: 'cup',
+      name:
+        'shredded cheese (such as Cheddar, Monterey Jack, or Mexican cheese blend)'
     })
   ])
 
@@ -219,6 +279,50 @@ async function seed() {
       place: 2,
       instructions:
         'Add the white rice to a bowl and spoon the tuna mixture on top. Sprinkle with the sesame seeds, furikake or scallions, if using.'
+    }),
+
+    // steps for guacamole idx 12 - 16
+    Step.create({
+      place: 1,
+      instructions:
+        'In a medium bowl, combine the onion and lime juice, and season with salt and pepper. Let that sit as you chop the jalapeño.'
+    }),
+    Step.create({
+      place: 2,
+      instructions:
+        'Cut the hard stem end off of the jalapeño and discard, then slice the chile in half lengthwise. If you don’t want the spice, use your knife or a spoon to remove the inner seeds and white membrane (this is where most of the chile’s heat resides). If you enjoy the heat, then leave all of that in. Chop the jalapeño as finely as you can and add to the bowl with the onion and lime juice. Be sure to wash your hands very well with soap after handling spicy chiles like jalapeños, and whatever you do, do not touch your eyes after handling them.'
+    }),
+    Step.create({
+      place: 3,
+      instructions:
+        'Cut the avocados in half lengthwise and pull the halves apart. You can use your knife to pit the avocados, but a safer way is to hold the avocado half in one hand so that your thumb is touching the skin side where the pit is and your index and middle fingers are touching the flesh side around the pit. Gently press your fingers into each other to pop the pit out; with a ripe avocado, it should come out very easily. Use your hands to squeeze the avocado flesh out into the bowl with the other ingredients, or scoop it out with a spoon.'
+    }),
+    Step.create({
+      place: 4,
+      instructions:
+        'Using a fork, gently mash the avocados against the side of the bowl until they are mashed to your desired consistency, then stir them into the other ingredients until well combined. Taste and add more salt if desired.'
+    }),
+    Step.create({
+      place: 5,
+      instructions:
+        'Contrary to popular belief, adding avocado pits to guacamole does nothing to prevent oxidation, but if you press a good layer of plastic wrap or parchment paper directly over the guacamole and store it in the refrigerator, it will keep well for up to 2 days.'
+    }),
+
+    // steps for crispy-edged quesadilla 17 - 19
+    Step.create({
+      place: 1,
+      instructions:
+        'Place a medium nonstick skillet over medium heat, then add the oil. Let oil heat up for 20 seconds, swirling the pan around so the oil coats the bottom.'
+    }),
+    Step.create({
+      place: 2,
+      instructions:
+        'Place the tortilla in the skillet and sprinkle the cheese evenly over the top. Once the cheese begins to melt, 30 seconds to 1 minute, use a spatula to fold the tortilla in half. Using the spatula, press down firmly on the top of the tortilla until some of the cheese runs out into the pan. Let the quesadilla cook until the cheese that’s leaked out solidifies and turns brown, 2 to 3 minutes.'
+    }),
+    Step.create({
+      place: 3,
+      instructions:
+        'Flip the quesadilla over and let cook on the other side for another 1 to 2 minutes, until the cheese is crisp and golden. Slide quesadilla onto a plate and serve immediately.'
     })
   ])
 
@@ -228,13 +332,15 @@ async function seed() {
   // tldr start idx included in the slice, end idx is not
   const associationUsersRecipes = await Promise.all([
     users[0].setRecipes(recipes.slice(0, 2)),
-    users[1].setRecipes(recipes.slice(2, 3))
+    users[1].setRecipes(recipes.slice(2, 10))
   ])
 
   const associationRecipesIngredients = await Promise.all([
     recipes[0].setIngredients(ingredients.slice(0, 3)),
     recipes[1].setIngredients(ingredients.slice(3, 15)),
-    recipes[2].setIngredients(ingredients.slice(14, 20))
+    recipes[2].setIngredients(ingredients.slice(15, 21)),
+    recipes[3].setIngredients(ingredients.slice(21, 26)),
+    recipes[4].setIngredients(ingredients.slice(26, 29))
   ])
 
   const associationRecipesTools = await Promise.all([
@@ -244,7 +350,9 @@ async function seed() {
   const associationRecipesSteps = await Promise.all([
     recipes[0].setSteps(steps.slice(0, 3)),
     recipes[1].setSteps(steps.slice(3, 10)),
-    recipes[2].setSteps(steps.slice(10, 12))
+    recipes[2].setSteps(steps.slice(10, 12)),
+    recipes[3].setSteps(steps.slice(12, 17)),
+    recipes[4].setSteps(steps.slice(17, 20))
   ])
 
   console.log(`seeded ${users.length} users`)
