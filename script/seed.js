@@ -32,6 +32,15 @@ async function seed() {
         'https://img.sndimg.com/food/image/upload/f_auto,c_thumb,q_73,ar_16:9,w_560/v1/img/recipes/99/47/6/j7L11nRQNeKACth1WJkg_easy-beef-broccoli-stir-fry-6106.jpg',
       time: 25,
       serves: 4
+    }),
+    Recipe.create({
+      name: 'Tuna Mayo Rice Bowl',
+      description:
+        'This homey dish takes comforting canned tuna to richer, silkier heights. Mayonnaise helps to hold the tuna together and toasted sesame oil lends incomparable nuttiness. You can adjust the seasonings to your taste: Use as much or as little soy sauce as you’d like for a savory accent. You can lean into the nuttiness of this rice bowl by sowing the top with toasted sesame seeds, or amp up the savoriness with furikake or scallions. A staple of home cooking in Hawaii and South Korea (where it is sometimes called deopbap), this simple meal is a workday workhorse.',
+      imageUrl:
+        'https://static01.nyt.com/images/2022/06/22/dining/21beginner-rex2/merlin_208168452_ef0bfb9e-7026-4e48-ad70-b64d84205197-articleLarge.jpg',
+      time: 5,
+      serves: 1
     })
   ])
 
@@ -109,6 +118,37 @@ async function seed() {
     }),
     Ingredient.create({
       name: 'toasted sesame seeds, for serving, optional'
+    }),
+
+    // ingredients for tuna mayo rice bowl idx 14 - 19
+    Ingredient.create({
+      quantity: '1',
+      unit: '(5 ounce) can',
+      name: 'tuna (preferably any variety stored in oil), well drained'
+    }),
+    Ingredient.create({
+      quantity: '2',
+      unit: 'tablespoons',
+      name: 'mayonaise'
+    }),
+    Ingredient.create({
+      quantity: '1',
+      unit: 'teaspoon',
+      name: 'toasted sesame oil'
+    }),
+    Ingredient.create({
+      quantity: '1/2',
+      unit: 'teaspoon',
+      name: 'soy sauce'
+    }),
+    Ingredient.create({
+      quantity: '1',
+      unit: 'cup',
+      name: 'cooked white rice'
+    }),
+    Ingredient.create({
+      name:
+        'Toasted white or black sesame seeds, furikake or chopped scallions, for topping (optional) '
     })
   ])
 
@@ -167,6 +207,18 @@ async function seed() {
       place: 7,
       instructions:
         'Serve over rice and garnish with toasted sesame seeds (optional).'
+    }),
+
+    // steps for tuna mayo rice bowl idx 10 - 11
+    Step.create({
+      place: 1,
+      instructions:
+        'In a small bowl, stir the tuna, mayonnaise, sesame oil and soy sauce to combine.'
+    }),
+    Step.create({
+      place: 2,
+      instructions:
+        'Add the white rice to a bowl and spoon the tuna mixture on top. Sprinkle with the sesame seeds, furikake or scallions, if using.'
     })
   ])
 
@@ -175,14 +227,14 @@ async function seed() {
   // if end idx greater than sequence length, slicing will extract through to the end of sequence
   // tldr start idx included in the slice, end idx is not
   const associationUsersRecipes = await Promise.all([
-    users[0].setRecipes(recipes.slice(0, 2))
-
-    // users[1].setRecipes(recipes.slice(2, 4))
+    users[0].setRecipes(recipes.slice(0, 2)),
+    users[1].setRecipes(recipes.slice(2, 3))
   ])
 
   const associationRecipesIngredients = await Promise.all([
     recipes[0].setIngredients(ingredients.slice(0, 3)),
-    recipes[1].setIngredients(ingredients.slice(3, 15))
+    recipes[1].setIngredients(ingredients.slice(3, 15)),
+    recipes[2].setIngredients(ingredients.slice(14, 20))
   ])
 
   const associationRecipesTools = await Promise.all([
@@ -191,7 +243,8 @@ async function seed() {
 
   const associationRecipesSteps = await Promise.all([
     recipes[0].setSteps(steps.slice(0, 3)),
-    recipes[1].setSteps(steps.slice(3, 10))
+    recipes[1].setSteps(steps.slice(3, 10)),
+    recipes[2].setSteps(steps.slice(10, 12))
   ])
 
   console.log(`seeded ${users.length} users`)
