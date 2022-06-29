@@ -83,11 +83,29 @@ async function seed() {
     Recipe.create({
       name: 'Star Wars Blue Milk',
       description:
-        'May the 4th Be With You! I thought it would be fun to make Blue Milk (aka bantha milk) from Star Wars today. You can get this at the “Milk Stand” at Galaxy’s Edge in Disneyland. They describe it as a Plant-based blend of Coconut and Rice Milk with alluring fruity characteristics – it’s like a tropical slushie. My version is a more delicious upgrade to Disneyland’s version – I use real fruit and juices  instead of a long list of “flavorings”',
+        'May the Force Be With You! I thought it would be fun to make Blue Milk (aka bantha milk) from Star Wars today. You can get this at the “Milk Stand” at Galaxy’s Edge in Disneyland. They describe it as a Plant-based blend of Coconut and Rice Milk with alluring fruity characteristics – it’s like a tropical slushie. My version is a more delicious upgrade to Disneyland’s version – I use real fruit and juices  instead of a long list of “flavorings”',
       imageUrl:
         'https://foodisafourletterword.com/wp-content/uploads/2022/05/Star_Wars_Blue_Milk_Recipe_03.jpg',
       time: 5,
       serves: 1
+    }),
+    Recipe.create({
+      name: 'Roasted Mixed Vegetables',
+      description:
+        'Make this your go-to recipe any time roasted vegetables are on the menu. The technique will work for any high-moisture vegetable, and the process of cutting your selected vegetables into 1-inch pieces allows them all to cook at the same rate. The optional garlicky yogurt sauce turns a pan of roasted veggies into a light meal, especially when paired with some crusty bread or a bowl of rice or other grains, or you can serve these as a colorful side dish.',
+      imageUrl:
+        'https://static01.nyt.com/images/2022/06/22/dining/21beginner-rex7/merlin_208168515_dd8cb49f-06fc-4c1f-b0e4-5cfb08b9036d-articleLarge.jpg',
+      time: 45,
+      serves: 2
+    }),
+    Recipe.create({
+      name: 'Broiled Salmon With Mustard and Lemon',
+      description:
+        'In this simple salmon recipe, a quick stint under the broiler transforms smooth Dijon mustard into a savory, caramelized crust, and a squeeze of fresh lemon juice adds just the right brightness and tang to the rich, sweet fish. Covering the baking pan with a protective layer of aluminum foil helps with the cleanup, meaning you can cook dinner and wash up in under 30 minutes.',
+      imageUrl:
+        'https://static01.nyt.com/images/2022/06/22/dining/21beginner-rex4/22beginner-rex4-articleLarge.jpg',
+      time: 15,
+      serves: 2
     })
   ])
 
@@ -328,6 +346,77 @@ async function seed() {
       quantity: '2 - 4',
       unit: 'Drops',
       name: 'Neon Blue Food Coloring'
+    }),
+
+    // ingredients for roasted mixeed vegetables idx 48 - 56
+    Ingredient.create({
+      quantity: '8',
+      unit: 'cups',
+      name:
+        'vegetables (any combination of broccoli, zucchini, cherry, tomatoes, brussels sprouts, mushrooms), cut into 1-inch pieces'
+    }),
+    Ingredient.create({
+      quantity: '2',
+      unit: 'tablespoons',
+      name: 'extra-virigin olive oil, plus more for serving'
+    }),
+    Ingredient.create({
+      quantity: '1 1/4',
+      unit: 'teaspoons',
+      name: 'kosher salt (such as Diamond Crystal)'
+    }),
+    Ingredient.create({
+      name: 'Freshly ground black pepper'
+    }),
+    Ingredient.create({
+      quantity: '4',
+      name: 'fresh thyme sprigs or 1 teaspoon dried thyme (optional)'
+    }),
+    Ingredient.create({
+      quantity: '1',
+      unit: 'cup',
+      name: 'whole-milk Greek yogurt (for the OPTIONAL garlicky yogurt sauce)'
+    }),
+    Ingredient.create({
+      quantity: '1 to 2',
+      name:
+        'garlic cloves, finely grated or minced (for the OPTIONAL garlicky yogurt sauce)'
+    }),
+    Ingredient.create({
+      quantity: '1',
+      unit: 'tablespoon',
+      name: 'extra-virgin olive oil (for the OPTIONAL garlicky yogurt sauce)'
+    }),
+    Ingredient.create({
+      name:
+        'pinch each of salt and freshly ground black pepper (for the OPTIONAL garlicky yogurt sauce)'
+    }),
+
+    // ingredients for broiled salmon idx 57 - 62
+    Ingredient.create({
+      quantity: '2',
+      name: '(6- to 8-ounce) skin-on salmon fillets, each about 1-inch thick'
+    }),
+    Ingredient.create({
+      quantity: '1/2',
+      unit: 'teaspoon',
+      name: 'kosher salt (such as Diamond Crystal), plus more to taste'
+    }),
+    Ingredient.create({
+      name: 'Freshly ground black pepper'
+    }),
+    Ingredient.create({
+      quantity: '2',
+      unit: 'tablespoons',
+      name: 'extra-virgin olive oil'
+    }),
+    Ingredient.create({
+      quantity: '1',
+      unit: 'tablespoon',
+      name: 'Dijon mustard'
+    }),
+    Ingredient.create({
+      name: 'Lemon wedges, for serving'
     })
   ])
 
@@ -335,6 +424,11 @@ async function seed() {
     // tools for broccoli stir-fry, idx 0
     Tool.create({
       name: 'large skillet or wok'
+    }),
+
+    // tools for blue milk, idx 1
+    Tool.create({
+      name: 'blender'
     })
   ])
 
@@ -483,11 +577,55 @@ async function seed() {
         'Add the remaining butter and the eggs and cook, stirring gently and constantly with a wooden spoon, until the butter melts and the eggs are half wet and half solid, 15 to 45 seconds. Turn off the heat, add the cheese and continue stirring until the mixture is creamy but no longer wet, about 30 to 45 seconds. Scrape onto the toast right away and enjoy.'
     }),
 
-    // step for blue milk idx 27
+    // steps for blue milk idx 27
     Step.create({
       place: 1,
       instructions:
         'Add all ingredients to a blender and blend on high speed until smooth. Start with 2 drops of Neon Blue Food Coloring, then you can add more until you’re happy with the color. Taste and add sugar if you prefer it sweeter. Serve immediately & Enjoy!'
+    }),
+
+    // steps for roasted mixed vegetables idx 28 - 31
+    Step.create({
+      place: 1,
+      instructions:
+        'Prepare the vegetables: Heat oven to 425 degrees. Add the vegetables to a rimmed sheet pan. Add 2 tablespoons oil, the salt, pepper and thyme (if using), and gently toss vegetables to coat. Use your hands to spread the vegetables out into one layer, spacing them evenly all over the pan.'
+    }),
+    Step.create({
+      place: 2,
+      instructions:
+        'Transfer to the oven and roast until they are tender and browned, 30 to 40 minutes, stirring at least once during roasting for even cooking.'
+    }),
+    Step.create({
+      place: 3,
+      instructions:
+        'While vegetables roast, you can make yogurt sauce if you like: In a small bowl, combine yogurt, garlic, oil, salt and pepper. Taste and adjust seasoning. Cover and place in the refrigerator until ready to use.'
+    }),
+    Step.create({
+      place: 4,
+      instructions:
+        'Serve roasted vegetables with a dollop of garlic yogurt, if desired, and a drizzle of oil on top.'
+    }),
+
+    // steps for broiled salmon idx 32 - 35
+    Step.create({
+      place: 1,
+      instructions:
+        'Position one oven rack 6 inches from the broiler heat source then heat the broiler. Season the salmon fillets all over with ½ teaspoon salt and a couple of grinds of pepper and place them on an aluminum foil-lined sheet pan, skin side down.'
+    }),
+    Step.create({
+      place: 2,
+      instructions:
+        'In a small bowl, whisk the oil and mustard until well mixed. Brush the tops and sides of the salmon with this mustard mixture.'
+    }),
+    Step.create({
+      place: 3,
+      instructions:
+        'Broil until the salmon is opaque with a deep brown crust, about 6 to 8 minutes for medium-rare. (The center of the fillets will be dark pink, if you pierce one with a paring knife and take a look.) If your fillets are thinner, reduce cooking time by 1 to 2 minutes. If you prefer more well-done fish, add 1 or 2 minutes to the cooking time.'
+    }),
+    Step.create({
+      place: 4,
+      instructions:
+        'Squeeze a lemon wedge all over the cooked salmon fillets, then serve salmon with more lemon wedges on the side.'
     })
   ])
 
@@ -508,11 +646,14 @@ async function seed() {
     recipes[4].setIngredients(ingredients.slice(26, 29)),
     recipes[5].setIngredients(ingredients.slice(29, 35)),
     recipes[6].setIngredients(ingredients.slice(35, 40)),
-    recipes[7].setIngredients(ingredients.slice(40, 48))
+    recipes[7].setIngredients(ingredients.slice(40, 48)),
+    recipes[8].setIngredients(ingredients.slice(48, 57)),
+    recipes[9].setIngredients(ingredients.slice(57, 63))
   ])
 
   const associationRecipesTools = await Promise.all([
-    recipes[1].setTools(tools.slice(0, 1))
+    recipes[1].setTools(tools.slice(0, 1)),
+    recipes[7].setTools(tools.slice(1, 2))
   ])
 
   const associationRecipesSteps = await Promise.all([
@@ -523,7 +664,9 @@ async function seed() {
     recipes[4].setSteps(steps.slice(17, 20)),
     recipes[5].setSteps(steps.slice(20, 24)),
     recipes[6].setSteps(steps.slice(24, 27)),
-    recipes[7].setSteps(steps.slice(27, 28))
+    recipes[7].setSteps(steps.slice(27, 28)),
+    recipes[8].setSteps(steps.slice(28, 32)),
+    recipes[9].setSteps(steps.slice(32, 36))
   ])
 
   console.log(`seeded ${users.length} users`)

@@ -19,6 +19,7 @@ export class SingleRecipe extends React.Component {
     console.log('props', this.props)
   }
 
+  //! find a way to map and render steps in the proper order
   render() {
     const {recipe, ingredients, tools, steps} = this.props
 
