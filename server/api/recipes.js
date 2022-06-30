@@ -23,4 +23,22 @@ router.get('/:recipeId', async (req, res, next) => {
   }
 })
 
+// Add a new recipe
+// POST /api/recipes
+router.post('/', async (req, res, next) => {
+  try {
+    const [product, created] = await Recipe.findOrCreate({
+      where: {
+        name: req.body.name
+      },
+      defaults: req.body
+    })
+
+    if (!created) return res.sendStatus(409)
+    return res.status(201).json(product)
+  } catch (err) {
+    next(err)
+  }
+})
+
 module.exports = router
