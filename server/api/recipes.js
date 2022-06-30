@@ -27,7 +27,7 @@ router.get('/:recipeId', async (req, res, next) => {
 // POST /api/recipes
 router.post('/', async (req, res, next) => {
   try {
-    const [product, created] = await Recipe.findOrCreate({
+    const [recipe, created] = await Recipe.findOrCreate({
       where: {
         name: req.body.name
       },
@@ -35,7 +35,7 @@ router.post('/', async (req, res, next) => {
     })
 
     if (!created) return res.sendStatus(409)
-    return res.status(201).json(product)
+    return res.status(201).json(recipe)
   } catch (err) {
     next(err)
   }
