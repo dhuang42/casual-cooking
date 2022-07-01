@@ -1,6 +1,8 @@
 const router = require('express').Router()
 const {Recipe} = require('../db/models')
 
+//! needs PUT route, using same RecipeForm to edit the recipe
+
 // All recipes
 // GET /api/recipes
 router.get('/', async (req, res, next) => {

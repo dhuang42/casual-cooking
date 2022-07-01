@@ -1,10 +1,17 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {fetchRecipes} from '../store/recipes'
-import {destroyRecipe} from '../store/recipes'
+import {fetchRecipes, destroyRecipe} from '../store/recipes'
 
 //! turn into cards
+
+//! delete button should live somewhere else
+// maybe in the future list of user's own recipes
+// or inside the SingleRecipe component (need a way to redirect to different page after deleting, tho)
+// should only be visible to the user who owns that recipe
+
+//! delete button needs to also delete the steps, ingredients, etc associated w/ the recipe
+
 export class AllRecipes extends React.Component {
   constructor(props) {
     super(props)
@@ -27,9 +34,6 @@ export class AllRecipes extends React.Component {
               <Link to={`recipes/${recipe.id}`}>
                 <h2>{recipe.name}</h2>
               </Link>
-              {/* //! delete button should live somewhere else
-                      maybe in the future list of user's own recipes
-                      or inside the SingleRecipe component (need a way to redirect to different page after deleting, tho) */}
               <button
                 type="button"
                 onClick={() => this.props.deleteRecipe(recipe.id)}
