@@ -30,6 +30,8 @@ export const fetchRecipes = () => {
 }
 
 export const postRecipe = createdRecipe => {
+  console.log('created recipe', createdRecipe)
+
   return async dispatch => {
     try {
       const {data: recipe} = await axios.post('/api/recipes', createdRecipe)

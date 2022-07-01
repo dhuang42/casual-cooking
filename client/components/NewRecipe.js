@@ -4,7 +4,8 @@ import {postRecipe} from '../store/recipes'
 import RecipeForm from './RecipeForm'
 
 const defaultState = {
-  name: ''
+  name: '',
+  description: ''
 }
 
 class NewRecipe extends React.Component {
@@ -19,14 +20,14 @@ class NewRecipe extends React.Component {
     this.setState({
       [event.target.name]: event.target.value
     })
-    console.log('state', this.state)
+    console.log('new change', event.target.value)
   }
 
   handleSubmit(event) {
     event.preventDefault()
 
-    let {name} = this.state
-    this.props.createRecipe({name})
+    let {name, description} = this.state
+    this.props.createRecipe({name, description})
     this.setState(defaultState)
   }
 
@@ -34,6 +35,7 @@ class NewRecipe extends React.Component {
     return (
       <RecipeForm
         name={this.state.name}
+        description={this.state.description}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
       />
