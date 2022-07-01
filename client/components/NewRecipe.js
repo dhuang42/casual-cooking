@@ -25,7 +25,6 @@ class NewRecipe extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
-
     let {name, description} = this.state
     this.props.createRecipe({name, description})
     this.setState(defaultState)

@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {fetchRecipes} from '../store/recipes'
+import {destroyRecipe} from '../store/recipes'
 
 //! turn into cards
 export class AllRecipes extends React.Component {
@@ -26,6 +27,15 @@ export class AllRecipes extends React.Component {
               <Link to={`recipes/${recipe.id}`}>
                 <h2>{recipe.name}</h2>
               </Link>
+              {/* //! delete button should live somewhere else
+                      maybe in the future list of user's own recipes
+                      or inside the SingleRecipe component (need a way to redirect to different page after deleting, tho) */}
+              <button
+                type="button"
+                onClick={() => this.props.deleteRecipe(recipe.id)}
+              >
+                Delete This Recipe
+              </button>
             </div>
           ))}
         </div>
@@ -39,7 +49,8 @@ const mapState = state => ({
 })
 
 const mapDispatch = dispatch => ({
-  getRecipes: () => dispatch(fetchRecipes())
+  getRecipes: () => dispatch(fetchRecipes()),
+  deleteRecipe: id => dispatch(destroyRecipe(id))
 })
 
 export default connect(mapState, mapDispatch)(AllRecipes)

@@ -41,4 +41,19 @@ router.post('/', async (req, res, next) => {
   }
 })
 
+// Delete recipe (irreversible)
+// DELETE /api/recipes/:recipeId
+router.delete('/:recipeId', async (req, res, next) => {
+  try {
+    await Recipe.destroy({
+      where: {
+        id: req.params.recipeId
+      }
+    })
+    res.status(204).end()
+  } catch (err) {
+    next(err)
+  }
+})
+
 module.exports = router

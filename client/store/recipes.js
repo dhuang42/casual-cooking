@@ -5,6 +5,7 @@ const initialState = []
 // action types
 const GET_ALL_RECIPES = 'GET_ALL_RECIPES'
 const ADD_RECIPE = 'ADD_RECIPE'
+const DELETE_RECIPE = 'DELETE_RECIPE'
 
 // action creators
 const getAllRecipes = recipes => ({
@@ -15,6 +16,11 @@ const getAllRecipes = recipes => ({
 const addRecipe = recipe => ({
   type: ADD_RECIPE,
   recipe
+})
+
+const deleteRecipe = recipeId => ({
+  type: DELETE_RECIPE,
+  recipeId
 })
 
 // thunks
@@ -42,6 +48,17 @@ export const postRecipe = createdRecipe => {
   }
 }
 
+export const destroyRecipe = recipeId => {
+  return async dispatch => {
+    try {
+      await axios.delete(`api/recipes/${recipeId}`)
+      dispatch(deleteRecipe(recipeId))
+    } catch (err) {
+      console.log('failed to delete the recipe', err)
+    }
+  }
+}
+
 // reducer
 const recipeReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -49,6 +66,8 @@ const recipeReducer = (state = initialState, action) => {
       return action.recipes
     case ADD_RECIPE:
       return [...state, action.recipe]
+    case DELETE_RECIPE:
+      return state.filter(recipe => recipe.id !== action.recipeId)
     default:
       return state
   }
