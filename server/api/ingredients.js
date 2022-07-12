@@ -38,4 +38,19 @@ router.get('/recipes/:recipeId', async (req, res, next) => {
   }
 })
 
+// Delete ingredients for specific recipe
+// DELETE /api/ingredients/recipe/:recipeId
+router.delete('/recipes/:recipeId', async (req, res, next) => {
+  try {
+    await Ingredient.destroy({
+      where: {
+        recipeId: req.params.recipeId
+      }
+    })
+    res.status(204).end()
+  } catch (err) {
+    next(err)
+  }
+})
+
 module.exports = router

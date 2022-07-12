@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {fetchRecipes, destroyRecipe} from '../store/recipes'
+import {destroyIngredientsForRecipe} from '../store/ingredients'
 
 //! turn into cards
 
@@ -36,7 +37,10 @@ export class AllRecipes extends React.Component {
               </Link>
               <button
                 type="button"
-                onClick={() => this.props.deleteRecipe(recipe.id)}
+                onClick={() => {
+                  this.props.deleteIngredients(recipe.id)
+                  this.props.deleteRecipe(recipe.id)
+                }}
               >
                 Delete This Recipe
               </button>
@@ -54,7 +58,8 @@ const mapState = state => ({
 
 const mapDispatch = dispatch => ({
   getRecipes: () => dispatch(fetchRecipes()),
-  deleteRecipe: id => dispatch(destroyRecipe(id))
+  deleteRecipe: id => dispatch(destroyRecipe(id)),
+  deleteIngredients: id => dispatch(destroyIngredientsForRecipe(id))
 })
 
 export default connect(mapState, mapDispatch)(AllRecipes)
